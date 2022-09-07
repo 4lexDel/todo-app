@@ -1,0 +1,30 @@
+$chromeColor: rgb(60, 60, 60);
+nav {
+    margin: 0px;
+    margin-top: 0px;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    background-color: $chromeColor;
+    a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 12px 17px;
+        margin-left: 0px;
+        margin-right: 0px;
+        color: white;
+        //background-color: $chromeColor;
+        font-size: 22px;
+        &:hover {
+            background-color: grey;
+        }
+        &:active {
+            color: $chromeColor;
+            background-color: rgb(232, 232, 232);
+        }
+    }
+}
+
+nav .active {
+    background-color: rgb(22, 120, 22) !important;
+}
