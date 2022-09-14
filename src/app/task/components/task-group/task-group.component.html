@@ -1,1 +1,16 @@
-<app-task-list *ngFor="let taskList of taskLists" [taskList]="taskList"></app-task-list>
+<h1>Todo listes [CRUD]</h1>
+<div class="option">
+    <button (click)="addNewTask()" class="add-button">+</button>
+</div>
+<app-task-list *ngFor="let taskList of taskLists$ | async" [taskList]="taskList"></app-task-list>
+<div *ngIf="taskLists$ | async else loading"></div>
+
+<ng-template #loading>
+    <div class="loader"></div>
+</ng-template>
+
+
+<!-- <div *ngIf="taskLists$ | async; else loading">
+</div>
+
+<ng-template #loading>Loading...</ng-template> -->

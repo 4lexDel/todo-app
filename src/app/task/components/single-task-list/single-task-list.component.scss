@@ -1,0 +1,44 @@
+.card {
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+}
+
+.backButton {
+    background-color: rgb(40, 40, 234);
+    color: white;
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    &:hover {
+        opacity: 0.9;
+    }
+    &:active {
+        color: rgb(40, 40, 234);
+        background-color: white;
+    }
+}
+
+button {
+    display: block;
+    margin: 1px auto;
+    background-color: transparent;
+    border: solid 2px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px 10px;
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.add-button {
+    font-size: 20px;
+    border-color: green;
+    color: green;
+    &:active {
+        background-color: green;
+        color: black;
+    }
+}

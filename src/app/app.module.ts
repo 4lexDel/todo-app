@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { LandingPageModule } from './landing-page/landing-page.module';
 import { TaskModule } from './task/task.module';
@@ -16,7 +17,8 @@ import { TaskModule } from './task/task.module';
     AppRoutingModule,
     CoreModule,
     LandingPageModule,
-    TaskModule
+    TaskModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,18 @@
-<h2> {{task.title}} </h2>
-<p> {{task.description}} </p>
-<p> Délai : {{task.startDate}} - {{task.endDate}} </p>
-<p> {{task.advancement}}/100 </p>
+<div class="task-card">
+    <div class="task-card-header">
+        <h2> {{task.title}} </h2>
+        <p id="priority">Priorité : {{task.priority}} </p>
+    </div>
+    <div class="task-card-body">
+        <p> {{task.description}} </p>
+        <p>Début : {{task.startDate}} </p>
+        <p>Fin : {{task.endDate}} </p>
+    </div>
+    <div class="task-card-footer">
+        <p>Avancement : {{task.advancement}}/100 </p>
+        <div class="option">
+            <button class="delete-button" (click)="deleteTask()">Supprimer</button>
+            <button class="update-button" (click)="updateTask()">Modifier</button>
+        </div>
+    </div>
+</div>

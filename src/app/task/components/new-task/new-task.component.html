@@ -1,1 +1,35 @@
-<p>new-task works!</p>
+<button class="backButton" (click)="backPage()">Retour</button>
+<div class="form-card">
+    <h2>Ajouter une tache</h2>
+
+    <form [formGroup]="newTaskForm">
+        <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text" id="title" formControlName="title">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" type="text" formControlName="description" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="priority">Priorité</label>
+            <input type="number" id="priority" formControlName="priority">
+        </div>
+        <div class="form-group">
+            <label for="startDate">Date de début</label>
+            <input type="date" id="startDate" formControlName="startDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate">Date de fin</label>
+            <input type="date" id="endDate" formControlName="endDate">
+        </div>
+        <div class="form-group">
+            <label for="advancement">Avancement</label>
+            <input type="number" id="advancement" formControlName="advancement">
+        </div>
+        <div class="action-buttons">
+            <button type="button" (click)="onSubmitForm()" [disabled]="newTaskForm.invalid">Ajouter</button>
+        </div>
+    </form>
+    <div *ngIf="process" class="loader"></div>
+</div>

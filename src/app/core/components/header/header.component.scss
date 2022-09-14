@@ -4,7 +4,8 @@ nav {
     margin-top: 0px;
     width: 100%;
     height: auto;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: space-between;
     background-color: $chromeColor;
     a {
         text-decoration: none;
@@ -27,4 +28,24 @@ nav {
 
 nav .active {
     background-color: rgb(22, 120, 22) !important;
+}
+
+// .button-options {
+//     display: block;
+// }
+#disconnectButton {
+    margin: 0px;
+    border: none;
+    padding: 5px 20px;
+    display: block;
+    background-color: #ec0000;
+    color: white;
+    font-size: 18px;
+    &:hover {
+        opacity: 0.9;
+    }
+    &:active {
+        color: #ec0000;
+        background-color: white;
+    }
 }

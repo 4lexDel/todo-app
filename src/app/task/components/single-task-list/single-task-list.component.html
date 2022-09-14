@@ -1,0 +1,13 @@
+<button class="backButton" (click)="backPage()">Retour</button>
+<div *ngIf="taskList$ | async as taskList else loading">
+    <h1> {{taskList.title}} </h1>
+    <div class="option">
+        <button (click)="addNewTask()" class="add-button">+</button>
+    </div>
+
+    <app-task *ngFor="let task of taskList.tasks" [task]="task" [taskListId]="taskList.id"></app-task>
+</div>
+
+<ng-template #loading>
+    <div class="loader"></div>
+</ng-template>

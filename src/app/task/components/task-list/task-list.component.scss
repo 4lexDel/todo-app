@@ -1,0 +1,41 @@
+.card {
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option button {
+    margin: 1px;
+    background-color: transparent;
+    border: solid 2px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px 10px;
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.update-button {
+    border-color: rgb(40, 40, 234);
+    color: rgb(40, 40, 234);
+    &:active {
+        background-color: rgb(40, 40, 234);
+        color: black;
+    }
+}
+
+.delete-button {
+    border-color: red;
+    color: red;
+    &:active {
+        background-color: red;
+        color: black;
+    }
+}

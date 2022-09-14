@@ -1,0 +1,59 @@
+.task-card {
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: #f1d07d7d 4px 4px 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1d07d7d;
+}
+
+.task-card-header {
+    display: flex;
+    justify-content: space-between;
+    #priority {
+        font-size: larger;
+        font-weight: bold;
+        border: black solid;
+        display: block;
+        border-radius: 100px;
+        padding: 2px 10px;
+    }
+}
+
+.task-card-body {}
+
+.task-card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option button {
+    margin: 1px;
+    background-color: transparent;
+    border: solid 2px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px 10px;
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.update-button {
+    border-color: rgb(40, 40, 234);
+    color: rgb(40, 40, 234);
+    &:active {
+        background-color: rgb(40, 40, 234);
+        color: black;
+    }
+}
+
+.delete-button {
+    border-color: red;
+    color: red;
+    &:active {
+        background-color: red;
+        color: black;
+    }
+}

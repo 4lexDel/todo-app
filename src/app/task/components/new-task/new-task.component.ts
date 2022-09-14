@@ -1,4 +1,10 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { lastValueFrom, Observable } from 'rxjs';
+import { TaskList } from 'src/app/core/models/task-list.model';
+import { TasksService } from 'src/app/core/services/tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -6,10 +12,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent implements OnInit {
+  newTaskForm!: FormGroup;
+  process:boolean = false;
+  taskListId!:number;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private taskService: TasksService, private router: Router, private location: Location, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.taskListId = this.activatedRoute.snapshot.params["idTasklist"];
+
+    this.newTaskForm = this.formBuilder.group({
+      title: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+      priority: [null, [Validators.required]],
+      startDate: [null, [Validators.required]],
+      endDate: [null, [Validators.required]],
+      advancement: [null, [Validators.required]],
+    });
   }
 
+  async onSubmitForm() {
+    this.process = true;
+    //console.log(this.newTaskForm.value);
+    //this.router.navigateByUrl('/todo');
+    let newTask = this.newTaskForm.value;
+
+    console.log(newTask);
+    
+    let newTaskReceive = await lastValueFrom(this.taskService.addTaskInTaskList(newTask, this.taskListId));
+    this.process = false;
+    this.router.navigateByUrl(`/todo/${this.taskListId}`);
+  }
+  
+  backPage(): void {
+    this.location.back();
+  }
 }

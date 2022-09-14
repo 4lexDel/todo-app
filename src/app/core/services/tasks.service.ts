@@ -1,54 +1,50 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { TaskGroup } from "../models/task-group.model";
+import { Observable } from "rxjs";
 import { TaskList } from "../models/task-list.model";
 import { Task } from "../models/task.model";
+import { AuthService } from "./auth.service";
 
 @Injectable({
     providedIn: 'root'
   })
-  export class TasksService {     
-    taskLists:TaskList[] = [
-      {
-        title:"Liste Alex",
-        tasks:[
-          {
-            title:"Angular front",
-            description:"TODO une application repertoriant des todolist et plus encore...",
-            priority:2,
-            startDate:new Date(),
-            endDate:new Date(),
-            advancement:5,
-          },
-          {
-            title:"NodeJS backend",
-            description:"Une API stockant toutes les task et peut être plus encore (login...)",
-            priority:3,
-            startDate:new Date(),
-            endDate:new Date(),
-            advancement:80,
-          }
-        ]
-      },
-      {
-        title:"Liste Lucille",
-        tasks:[
-          {
-            title:"Refléchir au concours de nouvelles",
-            description:"Reflexion au sujet de la rédaction d'une nouvelle sur le thème \"Malédiction\".",
-            priority:1,
-            startDate:new Date(),
-            endDate:new Date(),
-            advancement:20
-          }
-        ]
-      }
-    ]
+  export class TasksService {
+    taskLists$!:Observable<TaskList[]>;
+    domainName!:string;   
 
-    constructor(){
-
+    constructor(private http: HttpClient, authService: AuthService){
+      this.domainName = authService.getDomainName();
     }
 
-    getTaskLists(): TaskList[]{
-      return this.taskLists;
+    getTaskLists(): Observable<TaskList[]>{
+      return this.http.get<TaskList[]>(`${this.domainName}/task-lists`);
+    }
+
+    getTaskListByID(id:number): Observable<TaskList>{
+      return this.http.get<TaskList>(`${this.domainName}/task-lists/${id}`);
+    }
+
+    getTaskInTaskList(taskListId:number, taskId:number): Observable<TaskList>{
+      return this.http.get<TaskList>(`${this.domainName}/task-lists/${taskListId}/${taskId}`);
+    }
+
+    addTaskList(taskList:TaskList): Observable<Task>{
+      return this.http.post<Task>(`${this.domainName}/task-list/`, taskList);
+    }
+
+    addTaskInTaskList(task:Task, taskListId:number): Observable<Task>{
+      return this.http.post<Task>(`${this.domainName}/task-lists/${taskListId}`, task);
+    }
+
+    deleteTaskList(taskListId: number) {
+      return this.http.delete<TaskList>(`${this.domainName}/task-lists/${taskListId}`)
+    }  
+
+    deleteTaskInTaskList(taskListId:number, taskId:number): Observable<Task>{
+      return this.http.delete<Task>(`${this.domainName}/task-lists/${taskListId}/${taskId}`)
+    }
+
+    updateTaskInTaskList(updatedTask: Task, taskListId:number, taskId:number): Observable<Task>{
+      return this.http.put<Task>(`${this.domainName}/task-lists/${taskListId}/${taskId}`, updatedTask)
     }
   }

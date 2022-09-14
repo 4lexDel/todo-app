@@ -1,4 +1,5 @@
 export class Task{
+    id!:number;
     title!:string;
     description!:string;
     priority!:number;
@@ -6,7 +7,8 @@ export class Task{
     endDate!:Date;
     advancement!:number;
 
-    constructor(title:string, description:string, priority:number, startDate:Date, endDate:Date){
+    constructor(id:number, title:string, description:string, priority:number, startDate:Date, endDate:Date){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.priority = priority;
