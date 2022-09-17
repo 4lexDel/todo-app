@@ -1,9 +1,10 @@
 <nav>
     <div class="link">
         <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
-        <a routerLink="todo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">Todo List</a>
+        <a routerLink="todo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Todo List</a>
         <!-- <a routerLink="todo/add" routerLinkActive="active">Ajout</a> -->
         <a routerLink="todo/examples" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Exemples</a>
+        <a routerLink="auth/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Mon profil</a>
     </div>
     <button id="disconnectButton" (click)="logout()">Deconnexion</button>
 </nav>

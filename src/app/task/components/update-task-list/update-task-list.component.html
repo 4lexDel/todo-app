@@ -1,14 +1,14 @@
 <button class="backButton" (click)="backPage()">Retour</button>
 <div class="form-card">
-    <h2>Ajouter une todo liste</h2>
+    <h2>Modifier une todo liste</h2>
 
-    <form [formGroup]="newTaskListForm">
+    <form [formGroup]="updateTaskListForm">
         <div class="form-group">
             <label for="title">Titre</label>
             <input type="text" id="title" formControlName="title">
         </div>
         <div class="action-buttons">
-            <button type="button" (click)="onSubmitForm()" [disabled]="newTaskListForm.invalid">Ajouter</button>
+            <button type="button" (click)="onSubmitForm()" [disabled]="updateTaskListForm.invalid">Modifier</button>
         </div>
     </form>
     <br>

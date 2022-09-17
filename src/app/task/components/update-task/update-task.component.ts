@@ -13,15 +13,13 @@ import { TasksService } from 'src/app/core/services/tasks.service';
 })
 export class UpdateTaskComponent implements OnInit {
   updateTaskForm!: FormGroup;
-  taskLists$!:Observable<TaskList[]>;
   taskId!: number;
   taskListId!: number;
+  process:boolean = false;
 
   constructor(private location: Location, private formBuilder: FormBuilder, private taskService: TasksService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
-    this.taskLists$ = this.taskService.getTaskLists();
-
     this.updateTaskForm = this.formBuilder.group({
       title: [null, [Validators.required]],
       description: [null, [Validators.required]],
@@ -29,6 +27,8 @@ export class UpdateTaskComponent implements OnInit {
       startDate: [null, [Validators.required]],
       endDate: [null, [Validators.required]],
       advancement: [null, [Validators.required]],
+      backgroundColor: [null, null],
+      fontColor: [null, null]
     });
 
     this.taskId = this.activatedRoute.snapshot.params["idTask"];
@@ -39,14 +39,15 @@ export class UpdateTaskComponent implements OnInit {
   }
 
   async onSubmitForm() {
-    //console.log(this.newTaskForm.value);
-    //this.router.navigateByUrl('/todo');
+    this.process = true;
     let newTask = this.updateTaskForm.value;
 
     console.log(newTask);
     
     let newTaskReceive = await lastValueFrom(this.taskService.updateTaskInTaskList(newTask, this.taskListId, this.taskId));
     this.router.navigateByUrl(`/todo/${this.taskListId}`);
+
+    this.process = false;
   }
 
   backPage(): void {

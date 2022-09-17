@@ -23,13 +23,19 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       username: [null, [Validators.required, Validators.pattern(usernameRegExp)]],
       password: [null,  [Validators.required, Validators.pattern(this.passwordRegExp)]],
+      confirmPassword: [null,  [Validators.required]]
     });
   }
 
   async onSubmitForm() {
     this.process = true;
     console.log(this.registerForm.value.username);
-    this.response = await this.auth.register(this.registerForm.value);
+
+    if(this.registerForm.value. password != this.registerForm.value.confirmPassword){
+      this.response = "Mot de passe et confirmation différents !";
+    }
+    else this.response = await this.auth.register(this.registerForm.value);
+
     this.process = false;
   }
 

@@ -27,8 +27,19 @@
             <label for="advancement">Avancement</label>
             <input type="number" id="advancement" formControlName="advancement">
         </div>
+        <hr>
+        <div class="form-group">
+            <label for="color">Couleur de fond</label>
+            <input type="color" id="colorPicker" formControlName="backgroundColor" value="#ffffff">
+        </div>
+        <div class="form-group">
+            <label for="color">Couleur du texte</label>
+            <input type="color" id="colorPicker" formControlName="fontColor" value="#000000">
+        </div>
         <div class="action-buttons">
             <button type="button" (click)="onSubmitForm()" [disabled]="updateTaskForm.invalid">Modifier</button>
         </div>
     </form>
+    <br>
+    <div *ngIf="process" class="loader"></div>
 </div>

@@ -32,6 +32,6 @@ export class TaskListComponent implements OnInit {
   }
 
   updateTaskList(){
-
+    this.router.navigateByUrl(`/todo/update-task-list/${this.taskList.id}`);
   }
 }

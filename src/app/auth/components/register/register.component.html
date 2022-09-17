@@ -10,8 +10,12 @@
             <label for="password">Mot de passe</label>
             <input type="password" id="password" formControlName="password">
         </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirmer mot de passe</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword">
+        </div>
         <div class="action-buttons">
-            <button type="button" (click)="onSubmitForm()" [disabled]="registerForm.invalid">Enregistrer</button>
+            <button type="button" (click)="onSubmitForm()">Enregistrer</button>
         </div>
     </form>
     <button (click)="login()">Se connecter</button>

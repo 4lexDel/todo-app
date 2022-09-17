@@ -24,10 +24,10 @@ export class SingleTaskListComponent implements OnInit {
   }
 
   backPage(): void {
-    this.router.navigateByUrl(`todo/`);
+    this.router.navigateByUrl(`/todo`);
   }
 
   addNewTask(): void {
-    this.router.navigateByUrl(`todo/add-task/${this.taskListId}`);
+    this.router.navigateByUrl(`/todo/add-task/${this.taskListId}`);
   }
 }

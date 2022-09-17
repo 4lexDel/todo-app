@@ -16,6 +16,8 @@ export class NewTaskComponent implements OnInit {
   process:boolean = false;
   taskListId!:number;
 
+  selectColor: string = "#FFFFFF";
+
   constructor(private formBuilder: FormBuilder, private taskService: TasksService, private router: Router, private location: Location, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -28,7 +30,14 @@ export class NewTaskComponent implements OnInit {
       startDate: [null, [Validators.required]],
       endDate: [null, [Validators.required]],
       advancement: [null, [Validators.required]],
+      backgroundColor: [null, null],
+      fontColor: [null, null]
     });
+
+    this.newTaskForm.patchValue({
+      backgroundColor: "#f1d07d",
+      fontColor: "#000000"
+    })
   }
 
   async onSubmitForm() {

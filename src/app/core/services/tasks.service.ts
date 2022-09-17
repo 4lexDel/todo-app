@@ -44,6 +44,10 @@ import { AuthService } from "./auth.service";
       return this.http.delete<Task>(`${this.domainName}/task-lists/${taskListId}/${taskId}`)
     }
 
+    updateTaskList(updatedTask: TaskList, taskListId:number): Observable<TaskList>{
+      return this.http.put<TaskList>(`${this.domainName}/task-lists/${taskListId}`, updatedTask)
+    }
+
     updateTaskInTaskList(updatedTask: Task, taskListId:number, taskId:number): Observable<Task>{
       return this.http.put<Task>(`${this.domainName}/task-lists/${taskListId}/${taskId}`, updatedTask)
     }

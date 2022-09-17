@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskComponent } from './components/task/task.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskGroupComponent } from './components/task-group/task-group.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
@@ -11,7 +11,9 @@ import { ExampleComponent } from './components/example/example.component';
 import { SingleTaskListComponent } from './components/single-task-list/single-task-list.component';
 import { UpdateTaskComponent } from './components/update-task/update-task.component';
 import { NewTaskListComponent } from './components/new-task-list/new-task-list.component';
+import { UpdateTaskListComponent } from './components/update-task-list/update-task-list.component';
 
+import { ColorPickerModule } from "primeng/colorpicker";
 
 
 @NgModule({
@@ -23,13 +25,16 @@ import { NewTaskListComponent } from './components/new-task-list/new-task-list.c
     ExampleComponent,
     SingleTaskListComponent,
     UpdateTaskComponent,
-    NewTaskListComponent
+    NewTaskListComponent,
+    UpdateTaskListComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     CoreModule,
+    ColorPickerModule,
+    FormsModule
   ],
   exports: [
     TaskComponent,
@@ -39,7 +44,8 @@ import { NewTaskListComponent } from './components/new-task-list/new-task-list.c
     ExampleComponent,
     SingleTaskListComponent,
     UpdateTaskComponent,
-    NewTaskListComponent
+    NewTaskListComponent,
+    UpdateTaskListComponent
   ]
 })
 export class TaskModule { }
